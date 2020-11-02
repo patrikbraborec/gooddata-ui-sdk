@@ -771,7 +771,7 @@ export class CorePivotTablePure extends React.Component<ICorePivotTableProps, IC
          * Ensures correct autoResizeColumns
          */
         this.updateAutoResizedColumns(gridApi, columnApi);
-        autoresizeAllColumns(columnApi, this.autoResizedColumns);
+        await autoresizeAllColumns(columnApi, this.autoResizedColumns);
     };
 
     private shouldPerformAutoresize() {
@@ -825,9 +825,7 @@ export class CorePivotTablePure extends React.Component<ICorePivotTableProps, IC
                 this.resetColumnsWidthToDefault(this.columnApi!, columns);
             }
             this.resizing = false;
-            this.setState({
-                resized: true,
-            });
+            this.setState({ resized: true });
         }
     };
 
@@ -886,10 +884,8 @@ export class CorePivotTablePure extends React.Component<ICorePivotTableProps, IC
             );
             this.setFittedColumns(columnApi);
 
-            if (!this.state.resized && !this.resizing) {
-                this.setState({
-                    resized: true,
-                });
+            if (!this.state.resized) {
+                this.setState({ resized: true });
             }
         }
     }
@@ -926,16 +922,15 @@ export class CorePivotTablePure extends React.Component<ICorePivotTableProps, IC
         });
     };
 
-    private startWatchingTableRendered = () => {
+    private startWatchingTableRendered = async () => {
         const missingContainerRef = !this.containerRef; // table having no data will be unmounted, it causes ref null
         const isTableRendered = this.shouldAutoResizeColumns()
             ? this.state.resized
             : this.isPivotTableReady(this.gridApi!);
-        const shouldCallAutoresizeColumns =
-            this.isPivotTableReady(this.gridApi!) && !this.state.resized && !this.resizing;
+        const shouldCallAutoresizeColumns = this.isPivotTableReady(this.gridApi!) && !this.state.resized;
 
         if (this.shouldAutoResizeColumns() && shouldCallAutoresizeColumns) {
-            this.autoresizeColumns(this.gridApi!, this.columnApi!);
+            await this.autoresizeColumns(this.gridApi!, this.columnApi!);
         }
 
         if (missingContainerRef || isTableRendered) {

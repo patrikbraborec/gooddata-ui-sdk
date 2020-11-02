@@ -868,10 +868,10 @@ const getTableFonts = (
 /**
  * Ag-Grid API set desired column sizes (it *mutates* pivot table columns data).
  */
-export const autoresizeAllColumns = (
+export const autoresizeAllColumns = async (
     columnApi: ColumnApi | null,
     autoResizedColumns: IResizedColumns,
-): void => {
+): Promise<void> => {
     if (columnApi) {
         const columns = columnApi.getPrimaryColumns();
 
@@ -882,7 +882,11 @@ export const autoresizeAllColumns = (
                 columnApi.setColumnWidth(columnDef.field, autoResizedColumn.width);
             }
         });
+
+        Promise.resolve();
     }
+
+    Promise.resolve();
 };
 
 /**
