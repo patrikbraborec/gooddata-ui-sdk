@@ -112,6 +112,11 @@ const BASE_TEMPLATE: any = {
                             }
                         }
                     },
+                    mouseOver(event: any) {
+                        const currentChart = this.series.chart;
+                        const container = get(currentChart, "container");
+                        customChartMouseOver(event, container);
+                    },
                 },
             },
         },
@@ -163,6 +168,14 @@ function registerRenderHandler(configuration: any, chartOptions: any) {
 
 function customChartClick(data: any, target: EventTarget): void {
     const event = new CustomEvent("customClick", {
+        detail: data,
+        bubbles: true,
+    });
+    target.dispatchEvent(event);
+}
+
+function customChartMouseOver(data: any, target: EventTarget): void {
+    const event = new CustomEvent("customMouseOver", {
         detail: data,
         bubbles: true,
     });
