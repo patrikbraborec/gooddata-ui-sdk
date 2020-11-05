@@ -13,6 +13,7 @@ import { setupDrilldown } from "./setupDrilldownToParentAttribute";
 import Highcharts from "../../lib";
 import { supportedDualAxesChartTypes } from "../_chartOptions/chartCapabilities";
 import { IChartOptions } from "../../typings/unsafe";
+// import debounce from "lodash/debounce";
 
 const isTouchDevice = "ontouchstart" in window || navigator.msMaxTouchPoints;
 const HIGHCHART_PLOT_LIMITED_RANGE = 1e5;
@@ -89,11 +90,14 @@ const BASE_TEMPLATE: any = {
             },
             point: {
                 events: {
-                    click() {
+                    click(event: any) {
+                        const currentChart = this.series.chart;
+                        const container = get(currentChart, "container");
+                        customChartClick(event, container);
                         if (isTouchDevice) {
                             // Close opened tooltip on previous clicked chart
                             // (click between multiple charts on dashboards)
-                            const currentChart = this.series.chart;
+                            // const currentChart = this.series.chart;
                             const currentId = get(currentChart, "container.id");
                             const prevId = get(previousChart, "container.id");
                             const previousChartDisconnected = isEmpty(previousChart);
@@ -155,6 +159,14 @@ function registerRenderHandler(configuration: any, chartOptions: any) {
         set(configuration, "chart.events.render", handleChartLoad(chartOptions.type));
     }
     return configuration;
+}
+
+function customChartClick(data: any, target: EventTarget): void {
+    const event = new CustomEvent("customClick", {
+        detail: data,
+        bubbles: true,
+    });
+    target.dispatchEvent(event);
 }
 
 export function getCommonConfiguration(chartOptions: IChartOptions, drillConfig: IDrillConfig): any {
