@@ -2,7 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable header/header */
-/* THIS FILE WAS AUTO-GENERATED USING MOCK HANDLING TOOL; YOU SHOULD NOT EDIT THIS FILE; GENERATE TIME: 2021-02-05T07:33:28.219Z; */
+/* THIS FILE WAS AUTO-GENERATED USING MOCK HANDLING TOOL; YOU SHOULD NOT EDIT THIS FILE; GENERATE TIME: 2021-02-09T14:47:35.061Z; */
 
 const fp_00ab8c432637030b305313405b3f4efc = {
     definition: require("./uiTestScenarios/executions/00ab8c432637030b305313405b3f4efc/definition.json"),
@@ -2576,6 +2576,9 @@ const i_PivotTable_c53b6de862dfd0262382d0e788862fc6 = {
 const i_PivotTable_c8594723bcb5c2379c569b7bed0bf517 = {
     obj: require("./uiTestScenarios/insights/PivotTable.c8594723bcb5c2379c569b7bed0bf517/obj.json"),
 };
+const i_PivotTable_cb97200a62e20346dd6638cdda573c10 = {
+    obj: require("./uiTestScenarios/insights/PivotTable.cb97200a62e20346dd6638cdda573c10/obj.json"),
+};
 const i_PivotTable_cbb569e1acdc9d31ee6ff4868045b548 = {
     obj: require("./uiTestScenarios/insights/PivotTable.cbb569e1acdc9d31ee6ff4868045b548/obj.json"),
 };
@@ -3556,6 +3559,7 @@ export const Recordings = {
             i_PivotTable_c1295dbbd9bb108c9c64730b6cd02f41,
             i_PivotTable_c53b6de862dfd0262382d0e788862fc6,
             i_PivotTable_c8594723bcb5c2379c569b7bed0bf517,
+            i_PivotTable_cb97200a62e20346dd6638cdda573c10,
             i_PivotTable_cbb569e1acdc9d31ee6ff4868045b548,
             i_PivotTable_cc2cbda6c9fbb059be239e4cc3d971ca,
             i_PivotTable_cd4aab724f5663bc48f916890d856f4c,

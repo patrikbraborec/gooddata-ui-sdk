@@ -1675,6 +1675,9 @@
     "PivotTable.c8594723bcb5c2379c569b7bed0bf517": {
         "comment": "Auto-generated insight for test scenario PivotTable - simple table with attribute and metric column size."
     },
+    "PivotTable.cb97200a62e20346dd6638cdda573c10": {
+        "comment": "Auto-generated insight for test scenario PivotTable - with autoresizeAll."
+    },
     "PivotTable.cbb569e1acdc9d31ee6ff4868045b548": {
         "comment": "Auto-generated insight for test scenario PivotTable - two measures with single row attr sorted by second measure.",
         "scenarioName": "two measures with single row attr sorted by second measure",
