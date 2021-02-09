@@ -743,8 +743,7 @@ const collectWidths = (
 ): void => {
     const { context } = config;
     config.columns.forEach((column: Column) => {
-        const colId = agColId(column);
-        const col = config.tableDescriptor.getCol(colId);
+        const col = config.tableDescriptor.getCol(column);
 
         if (col && context) {
             const text = row[col.id];
@@ -773,9 +772,10 @@ export const getUpdatedColumnDefs = (
 ): ColDef[] => {
     return columns.map((column: Column) => {
         const colDef: ColDef = column.getColDef();
+        const colId = agColId(colDef);
 
-        if (colDef.field) {
-            const maxWidth = maxWidths.get(colDef.field);
+        if (colId) {
+            const maxWidth = maxWidths.get(colId);
             const newWidth = maxWidth ? Math.ceil(maxWidth + padding) : 0;
 
             return {
@@ -797,11 +797,12 @@ const calculateColumnWidths = (config: CalculateColumnWidthsConfig) => {
 
         config.columns.forEach((column: Column) => {
             const colDef: ColDef = column.getColDef();
-            const maxWidth = colDef.field ? maxWidths.get(colDef.field) : undefined;
+            const colId = agColId(colDef);
+            const maxWidth = colId ? maxWidths.get(colId) : undefined;
             const possibleMaxWidth = getMaxWidth(context, colDef.headerName, !!colDef.sort, maxWidth);
 
-            if (colDef.field && possibleMaxWidth) {
-                maxWidths.set(colDef.field, possibleMaxWidth);
+            if (colId && possibleMaxWidth) {
+                maxWidths.set(colId, possibleMaxWidth);
             }
         });
     }
@@ -882,9 +883,11 @@ export const autoresizeAllColumns = (
 
         columns.forEach((column: Column) => {
             const columnDef = column.getColDef();
-            const autoResizedColumn = autoResizedColumns[agColId(columnDef)];
-            if (columnDef.field && autoResizedColumn && autoResizedColumn.width) {
-                columnApi.setColumnWidth(columnDef.field, autoResizedColumn.width);
+            const colId = agColId(columnDef);
+            const autoResizedColumn = autoResizedColumns[colId];
+
+            if (colId && autoResizedColumn && autoResizedColumn.width) {
+                columnApi.setColumnWidth(colId, autoResizedColumn.width);
             }
         });
     }
@@ -931,7 +934,7 @@ export const getAutoResizedColumns = (
             cache: new Map(),
         });
         updatedColumDefs.forEach((columnDef: ColDef) => {
-            if (columnDef.field && columnDef.width !== undefined) {
+            if (agColId(columnDef) && columnDef.width !== undefined) {
                 autoResizedColumns[agColId(columnDef)] = {
                     width: columnDef.width,
                 };
