@@ -1,5 +1,5 @@
 // (C) 2007-2021 GoodData Corporation
-import { AnyCol, DataColLeaf, isDataColLeaf, isSliceCol, SliceCol } from "./tableDescriptorTypes";
+import { AnyCol, DataColLeaf, isDataColLeaf, isSliceCol, SliceCol } from "../structure/tableDescriptorTypes";
 import { IMappingHeader } from "@gooddata/sdk-ui";
 import { IAttributeDescriptor, isResultAttributeHeader } from "@gooddata/sdk-backend-spi";
 import invariant, { InvariantError } from "ts-invariant";

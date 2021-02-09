@@ -5,7 +5,7 @@ import { getGridIndex } from "./base/agGridUtils";
 import ApiWrapper from "./base/agGridApiWrapper";
 import { getScrollbarWidth } from "./utils";
 import { ROW_ATTRIBUTE_COLUMN } from "./base/constants";
-import { isCellDrillable } from "./drilling";
+import { isCellDrillable } from "./drilling/cellDrillabilityPredicate";
 import { DataViewFacade, IHeaderPredicate } from "@gooddata/sdk-ui";
 import { TableDescriptor } from "./structure/tableDescriptor";
 

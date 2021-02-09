@@ -126,13 +126,13 @@ import {
 import { invariant } from "ts-invariant";
 import { TableDescriptor } from "./impl/structure/tableDescriptor";
 import { ICommonHeaderParams } from "./impl/structure/headers/HeaderCell";
-import { createDrilledRow } from "./impl/structure/drilledRowFactory";
+import { createDrilledRow } from "./impl/drilling/drilledRowFactory";
 import isEmpty from "lodash/isEmpty";
-import { createDrillIntersection } from "./impl/structure/drillIntersectionFactory";
+import { createDrillIntersection } from "./impl/drilling/drillIntersectionFactory";
 import { IGridRow } from "./impl/data/resultTypes";
 import { isSomeTotal } from "./impl/data/dataSourceUtils";
 import last from "lodash/last";
-import { isCellDrillable } from "./impl/drilling";
+import { isCellDrillable } from "./impl/drilling/cellDrillabilityPredicate";
 
 const AG_NUMERIC_CELL_CLASSNAME = "ag-numeric-cell";
 const AG_NUMERIC_HEADER_CLASSNAME = "ag-numeric-header";

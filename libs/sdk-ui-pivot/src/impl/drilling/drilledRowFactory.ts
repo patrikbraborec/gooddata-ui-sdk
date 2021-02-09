@@ -1,5 +1,5 @@
 // (C) 2021 GoodData Corporation
-import { TableDescriptor } from "./tableDescriptor";
+import { TableDescriptor } from "../structure/tableDescriptor";
 import { DataValue } from "@gooddata/sdk-backend-spi";
 import { getMappingHeaderUri } from "@gooddata/sdk-ui";
 import { invariant } from "ts-invariant";

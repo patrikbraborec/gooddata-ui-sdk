@@ -1,7 +1,7 @@
 // (C) 2021 GoodData Corporation
 import { getDrillIntersection, IDrillEventIntersectionElement, IMappingHeader } from "@gooddata/sdk-ui";
-import { TableDescriptor } from "./tableDescriptor";
-import { agColId, AnyCol, isDataColLeaf, isSliceCol } from "./tableDescriptorTypes";
+import { TableDescriptor } from "../structure/tableDescriptor";
+import { agColId, AnyCol, isDataColLeaf, isSliceCol } from "../structure/tableDescriptorTypes";
 import { CellEvent } from "@ag-grid-community/all-modules";
 import invariant from "ts-invariant";
 import { createDataColLeafHeaders, createSliceColHeaders } from "./colDrillHeadersFactory";
